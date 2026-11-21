@@ -2,9 +2,11 @@
 (function () {
   'use strict';
   var IDS = {
+    arte: '3202011022316', primevideo: 'org.tizen.primevideo',
+    ard: '3201412000679', zdf: '3201705012365', youtube: '9Ur5IzDKqV.TizenYouTube',
     stremio: 'IkWsFHtOY9.Stremio', netflix: 'org.tizen.netflix-app',
-    disneyplus: 'MCmYXNxgcu.DisneyPlus', youtube: '9Ur5IzDKqV.TizenYouTube',
-    appletv: 'com.samsung.tv.aria-video', primevideo: 'org.tizen.primevideo',
+    disneyplus: 'MCmYXNxgcu.DisneyPlus',
+    appletv: 'com.samsung.tv.aria-video',
     abciview: 'mWK87Xghap.ABCiview', sbs: 'OyE7OuxlUi.SBSOnDemand',
     applemusic: 'org.tizen.apple.apple-music'
   };

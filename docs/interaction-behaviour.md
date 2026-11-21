@@ -33,7 +33,9 @@ The selected font applies to Home app names, the clock and Home controls, includ
 
 ## Streaming apps
 
-The nine default apps keep their known native IDs. Other installed consumer apps can also be added to Home. Launching uses the public `tizen.application.launch` API with the app's native ID. Missing apps and denied launches produce a real error. No web player, placeholder success page or account credential is embedded.
+The default Home holds Arte Mediathek, Prime Video, ARD Mediathek, ZDF Mediathek and YouTube. All twelve known apps, including the former defaults, keep their known native IDs, and other installed consumer apps can also be added to Home. Launching uses the public `tizen.application.launch` API with the app's native ID. Missing apps and denied launches produce a real error. No web player, placeholder success page or account credential is embedded.
+
+The Arte, ARD and ZDF IDs are community-collected for Samsung TVs and change with TV year and firmware. On-device launch must be confirmed on the reference TV before claiming those three targets work; a failed launch shows the real error and leaves the launcher usable.
 
 ## All apps
 
@@ -74,7 +76,9 @@ Selecting a source, opening Samsung’s viewer, seeing the expected HDMI picture
 
 ## Preferences and wallpaper
 
-The launcher stores appearance, Home order, recently removed apps, the last launched Home app, wallpaper and rotation locally. List and Dock share these preferences. The existing `cleanframe.home.v1` key is retained, with a fallback read from `cleanframe.shore.v1`. Legacy List maps to Dark + List + Type; Glass Dock and Glass Grid map to Photo + Dock + Glass. App order, wallpaper, rotation and the last Home app are preserved.
+The launcher stores appearance, Home order, recently removed apps, the last launched Home app, wallpaper and rotation locally. List and Dock share these preferences. The existing `cleanframe.home.v1` key is retained, with a fallback read from `cleanframe.shore.v1`. Legacy List maps to Dark + List + Type; Glass Dock and Glass Grid map to Photo + Dock + Glass.
+
+Saves written before the Home reset (no stored version, or version 2) keep their appearance, wallpaper, rotation and records, but Home resets once to the new default order. Apps the reset removes from Home stay addable and appear in the editor's Recently removed section. The migration writes the new order with version 3; any later order the user arranges is preserved.
 
 The gallery contains 15 bundled wallpapers. Settings → Background → Wallpaper keeps the two-pane Settings frame. Up/Down browses a vertical thumbnail list without wrapping; the right-hand Home preview shows the candidate while the surrounding Settings backdrop stays on the applied photo. OK applies the focused photo and stays in Wallpaper. The tick marks the applied photo and preview status distinguishes unsaved browsing. Back restores the latest applied photo, cancels pending loading and returns to Background’s Wallpaper row. Photo and material assets change as one complete bundle; a failed load restores the applied preview and offers retry. Preview loading waits briefly for remote focus to settle. OK during loading queues application for that photo; another browse move or Back cancels it. Browsing never saves, and repeated OK on the applied photo does not write again.
 

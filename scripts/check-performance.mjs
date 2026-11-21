@@ -85,9 +85,11 @@ try {
   page.on('requestfailed', request => { if (!page.__closing && request.failure()?.errorText !== 'net::ERR_ABORTED') report.errors.push(request.failure()?.errorText + ' ' + request.url()); });
   await page.addInitScript(() => {
     const primary = [
-      ['IkWsFHtOY9.Stremio', 'Stremio'], ['org.tizen.netflix-app', 'Netflix'], ['MCmYXNxgcu.DisneyPlus', 'Disney+'],
-      ['9Ur5IzDKqV.TizenYouTube', 'YouTube'], ['com.samsung.tv.aria-video', 'Apple TV'], ['org.tizen.primevideo', 'Prime Video'],
-      ['mWK87Xghap.ABCiview', 'ABC iview'], ['OyE7OuxlUi.SBSOnDemand', 'SBS On Demand'], ['org.tizen.apple.apple-music', 'Apple Music']
+      ['3202011022316', 'Arte Mediathek'], ['org.tizen.primevideo', 'Prime Video'], ['3201412000679', 'ARD Mediathek'],
+      ['3201705012365', 'ZDF Mediathek'], ['9Ur5IzDKqV.TizenYouTube', 'YouTube'], ['IkWsFHtOY9.Stremio', 'Stremio'],
+      ['org.tizen.netflix-app', 'Netflix'], ['MCmYXNxgcu.DisneyPlus', 'Disney+'],
+      ['com.samsung.tv.aria-video', 'Apple TV'], ['mWK87Xghap.ABCiview', 'ABC iview'], ['OyE7OuxlUi.SBSOnDemand', 'SBS On Demand'],
+      ['org.tizen.apple.apple-music', 'Apple Music']
     ];
     const catalogue = primary.map(([id, name]) => ({ id, name, show: true, iconPath: '' }));
     for (let i = 0; i < 14; i++) catalogue.push({ id: 'Qa12345678.Stream' + i, name: 'Streaming app ' + String(i + 1).padStart(2, '0'), show: true, iconPath: '' });
@@ -95,7 +97,7 @@ try {
       getAppsInfo(ok) { setTimeout(() => ok(catalogue), 0); },
       launch(id, ok) { setTimeout(ok, 0); }
     } };
-    localStorage.setItem('cleanframe.home.v1', JSON.stringify({ dock: ['stremio', 'netflix', 'disneyplus', 'youtube', 'appletv', 'primevideo', 'abciview', 'sbs', 'applemusic'], wallpaper: 'misty', mode: 'fixed', theme: 'shore', lastApp: 'netflix' }));
+    localStorage.setItem('cleanframe.home.v1', JSON.stringify({ version: 3, dock: ['arte', 'primevideo', 'ard', 'zdf', 'youtube'], wallpaper: 'misty', mode: 'fixed', theme: 'shore', lastApp: 'youtube' }));
   });
   cdp = await page.context().newCDPSession(page);
   await cdp.send('Performance.enable');
